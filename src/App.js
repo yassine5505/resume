@@ -4,7 +4,7 @@ import './App.css';
 function App() {
   return (
     <div className="console">
-      guest@notebook > <span class="c">pwd</span>
+      guest@notebook > <span className="c">pwd</span>
     </div>
   );
 }
