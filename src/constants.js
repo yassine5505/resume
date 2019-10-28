@@ -17,9 +17,9 @@ export const messages = {
 
 export const commands = {
     "help": {
-        "commands": ["help", "--help", "-h"]
+        "commands": ["help", "h"]
     },
     "experience": {
-        "commands": ["exp", "experience", "--xp", ]
+        "commands": ["exp", "xp", "experience"]
     }
 };
