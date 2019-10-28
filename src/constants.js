@@ -1,10 +1,14 @@
 export const guest = "guest";
 
-export const dollarSeparator = "$";
+export const separator = "@";
 
-export const host = "notebook";
+export const host = "Notebook";
 
-export const suffix = "@:/$";
+export const colon = ":";
+
+export const home = "~";
+
+export const dollar = "$";
 
 export const messages = {
     "help": "For help, type help or -h",
