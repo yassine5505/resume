@@ -120,17 +120,17 @@ export default class App extends React.Component {
             case outputLineTypes.input:
                 if(element.props.text === "" || element.props.text === messages.welcome) inputIsEmpty = true;
                 return (<element.component props={element.props} key={index} key={index} />);
-              case outputLineTypes.guestHost:
-                  return inputIsEmpty ? (
-                    <span key={index}>
-                      <br />
-                      <element.component props={element.props} />
-                    </span>
-                    ) : (
-                      <element.component key={index} />
-                    );
-              case outputLineTypes.noCommandFound:
-                return <element.component props={element.props} key={index} />
+            case outputLineTypes.guestHost:
+                return inputIsEmpty ? (
+                  <span key={index}>
+                    <br />
+                    <element.component props={element.props} />
+                  </span>
+                  ) : (
+                    <element.component key={index} />
+                  );
+            case outputLineTypes.noCommandFound:
+              return <element.component props={element.props} key={index} />
             default: return null; 
           }
         })}
