@@ -15,7 +15,7 @@ export default function Help(){
                         <td>List academic education</td>
                     </tr>
                     <tr>
-                        <td style={{ fontWeight: "bold" }}>clear: </td>
+                        <td style={{ fontWeight: "bold" }}>clear, c: </td>
                         <td>Clear the output</td>
                     </tr>
                 </tbody>

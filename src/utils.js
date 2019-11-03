@@ -110,31 +110,22 @@ export function deleteInput(stack){
 
 // Check if an input command is valid
 export function inputIsValid(input) {
-    let found = false;
+    let command;
+    console.log(command)
     // From the commands array, see if any command alias matched with input
     commands.forEach((element) => {
         // aliases
         if(element.aliases.includes(input)) {
-            found = true;
+            command = element.name;
         }
     });
-    return found;
+    return typeof command === "undefined" ? false : command;
 }
 
 // Check if the input command is "clear"
+// "c" is an alias for "clear"
 export function isClear(input) {
-    return input === commands[2].name;
-}
-
-// Get executable text given an input command
-// This function assumes that the command is valid
-export function getExecutableText(command) {
-    for(let i = 0; i < executables.length; i++) {
-        if(executables[i].command === command){
-            // Run the script
-            return executables[i].executable;
-        }
-    }
+    return input === commands[2].name || input === "c";
 }
 
 /* 
