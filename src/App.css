@@ -12,6 +12,14 @@ body {
 	margin-top:100px;
 }
 
+.script{
+	border-style: dashed;
+	border-width: .2px;
+	border-color: #d3d3d3;;
+	margin: 5px 0 5px 0;
+	padding: 1em;
+}
+
 a {
 	color: #0bc;
 	text-decoration: none;

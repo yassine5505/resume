@@ -116,7 +116,7 @@ export default class App extends React.Component {
         { output.map((element, index) => {
           switch(element.type) {
             case outputLineTypes.executable:
-              return (<element.component props={element.props} key={index} key={index} />);
+              return (<element.component props={element.props} key={index} />);
             case outputLineTypes.input:
                 if(element.props.text === "" || element.props.text === messages.welcome) inputIsEmpty = true;
                 return (<element.component props={element.props} key={index} key={index} />);

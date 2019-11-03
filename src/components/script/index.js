@@ -3,8 +3,7 @@ import { commands } from "../../constants";
 import Help from "./help";
 import Experience from "./experience";
 
-export default function Script({props}) {
-    const { command } = props;
+function renderComponent (command) {
     switch(command){
         case commands[0].name:
             return <Help />;
@@ -12,4 +11,15 @@ export default function Script({props}) {
             return <Experience />;
         default: return null;
     }
+}
+
+export default function Script({props}) {
+    const { command } = props;
+    return (
+        <div className="script">
+            {
+                renderComponent(command)
+            }
+        </div> 
+    );
 }
