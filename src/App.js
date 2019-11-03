@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Cursor from './components/cursor';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
-import { keys, outputLineTypes } from './constants';
+import { keys, outputLineTypes, messages } from './constants';
 import { inputIsValid,
     addGuestHost,
     addExecutable,
@@ -26,8 +26,11 @@ export default class App extends React.Component {
     this.state = this.defaultState;
   }
   
-  // Handle key press (ALphanumeric)
+  // Handle key press (Alphanumeric)
   handleKeyEvent = (key) => {
+    var element = document.getElementsByClassName("console");
+    element.scrollTop = element.scrollHeight;
+
     let { input, output } = this.state;
     input = input.concat(key);
     output = concatInput(key, output);
@@ -103,30 +106,32 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { output, input } = this.state;
-    let shouldReturnToLine = false;
-    console.log(output);
+    const { output } = this.state;
+    let inputIsEmpty = false;
     return (
-      <div className="console">
+      <div className="console" id="console">
         <KeyboardEventHandler handleKeys={['alphanumeric']} onKeyEvent={this.handleKeyEvent} />
         <KeyboardEventHandler handleKeys={['all']} onKeyEvent={this.handleControlKeyEvent} />
         { /* Render output here */ }
         { output.map((element, index) => {
-          if (( element.type === input && element.props.text === "" ) ||
-              element.type === outputLineTypes.executable ||
-              element.type === outputLineTypes.noCommandFound
-          ) shouldReturnToLine = true;
-          else {
-            shouldReturnToLine = false;
-          }
-          if(shouldReturnToLine) {
-            return (
-            <span key={index} >
-              <br />
-              <element.component props={element.props} />
-            </span>
-          )} else {
-            return <element.component props={element.props} key={index} />;
+          switch(element.type) {
+            case outputLineTypes.executable:
+              return (<element.component props={element.props} key={index} key={index} />);
+            case outputLineTypes.input:
+                if(element.props.text === "" || element.props.text === messages.welcome) inputIsEmpty = true;
+                return (<element.component props={element.props} key={index} key={index} />);
+              case outputLineTypes.guestHost:
+                  return inputIsEmpty ? (
+                    <span key={index}>
+                      <br />
+                      <element.component props={element.props} />
+                    </span>
+                    ) : (
+                      <element.component key={index} />
+                    );
+              case outputLineTypes.noCommandFound:
+                return <element.component props={element.props} key={index} />
+            default: return null; 
           }
         })}
         <Cursor />
