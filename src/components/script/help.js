@@ -1,23 +1,25 @@
 import React from 'react';
+import { commands } from "../../constants";
 
 export default function Help(){
+    let aliases = null;
     return (
         <div>
             This is a list of all available commands:
             <table>
                 <tbody>
-                    <tr>
-                        <td style={{ fontWeight: "bold" }}>experience, xp, exp: </td>
-                        <td>List all experiences</td>
-                    </tr>
-                    <tr>
-                        <td style={{ fontWeight: "bold" }}>edu, education: </td>
-                        <td>List academic education</td>
-                    </tr>
-                    <tr>
-                        <td style={{ fontWeight: "bold" }}>clear, c: </td>
-                        <td>Clear the output</td>
-                    </tr>
+                    { commands.map((cmd, index) => {
+                        return (
+                            <tr key={index}>
+                            <td style={{ fontWeight: "bold" }}>
+                                { aliases = cmd.aliases.join(",") }
+                            </td>
+                            <td>
+                                { cmd.description }
+                            </td>
+                        </tr>
+                        )
+                    })}
                 </tbody>
             </table>
         </div>

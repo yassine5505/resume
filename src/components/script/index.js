@@ -7,9 +7,9 @@ import Project from "./project";
 
 function renderComponent (command) {
     switch(command){
-        case commands[0].name:
-            return <Help />;
         case commands[1].name:
+            return <Help />;
+        case commands[2].name:
             return <Experience />;
         case commands[3].name:
             return <Education />;

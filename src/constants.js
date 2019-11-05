@@ -26,28 +26,39 @@ export const messages = {
 
 export const commands = [
     {
+        "name": "clear",
+        "aliases": ["clear", "c"],
+        "description": "Clear the output"
+    },
+    {
         "name": "help",
         "aliases": ["help", "h"],
+        "description": "List available commands"
     },
     {
         "name": "experience",
         "aliases": ["exp", "xp", "experience"],
-    },
-    {
-        "name": "clear",
-        "aliases": ["clear", "c"],
+        "description": "My professional experiences"
     },
     {
         "name": "education",
-        "aliases": ["edu", "education"]
+        "aliases": ["edu", "education"],
+        "description": "Academic education"
     },
     {
         "name": "projects",
-        "aliases": ["p", "projects"]
+        "aliases": ["p", "projects"],
+        "description": "Projects and open source contributions"
     },
     {
         "name": "info",
-        "aliases": ["i", "info"]
+        "aliases": ["i", "info"],
+        "description": "Information about this site"
+    },
+    {
+        "name": "whoami",
+        "aliases": ["who", "wai", "w", "whoami"],
+        "description": "Who I am"
     }
 ];
 
