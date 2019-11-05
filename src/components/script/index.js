@@ -1,5 +1,6 @@
 import React from "react";
 import { commands } from "../../constants";
+import { getSuggestions } from "../../utils";
 import Help from "./help";
 import Experience from "./experience";
 import Education from "./education";
@@ -17,8 +18,6 @@ function renderComponent (command) {
         case commands[4].name:
             return <Project />;
         case commands[5].name:
-            return <Project />;
-        case commands[6].name:
             return <Whoami />;
         default: return null;
     }

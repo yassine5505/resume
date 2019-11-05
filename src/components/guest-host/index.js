@@ -1,6 +1,5 @@
 import React from "react";
 import { guest, separator, host, colon, home, dollar } from '../../constants';
-import "./guest-host.css";
 
 // User and host information displayed in the beginning of each line
 // E.g: yassine5505@Notebook:/$ <command>

@@ -12,7 +12,10 @@ import { inputIsValid,
     addInput,
     deleteInput,
     initialOutput,
-    isClear } from './utils';
+    isClear,
+    getSuggestions, 
+    addSuggestions,
+    modifyInput} from './utils';
 
 export default class App extends React.Component {
   defaultState = {
@@ -48,8 +51,10 @@ export default class App extends React.Component {
         this.handleEnterKeyEvent();
         break;
       case keys.backspace:
-          this.handleEnterBackspaceEvent();
+          this.handleBackspaceEvent();
           break;
+      case keys.tab:
+          this.handleTabEvent();
       default: return;
     }
   }
@@ -98,7 +103,7 @@ export default class App extends React.Component {
   }
 
   // Handle backspace control key
-  handleEnterBackspaceEvent = () => {
+  handleBackspaceEvent = () => {
     const { input, output } = this.state;
     this.setState({
       output: deleteInput(output),
@@ -106,12 +111,33 @@ export default class App extends React.Component {
     });
   }
 
+  handleTabEvent = () => {
+    let { input, output } = this.state;
+    let suggestions = getSuggestions(input);
+    if(input === "" || suggestions.length === 0) return;
+    else if(suggestions.length === 1) {
+      // Component  re renders but not writing to input !!!
+      input = suggestions[0];
+      output = modifyInput(input, output);
+      this.setState({
+        input: suggestions[0],
+        output
+      });
+    } else {
+      output = addSuggestions(input, output);
+      output = addGuestHost(output);
+      output = addInput(output, input);
+      this.setState({
+        output
+      });
+    }
+  }
+
   handleScrollToCursor = () => {
     let cursorCoords = ReactDOM
       .findDOMNode(this.refs['cursor'])
       .getBoundingClientRect();
     window.scrollTo(cursorCoords.x,cursorCoords.y);
-
   }
 
   componentDidUpdate = () => {
@@ -137,6 +163,8 @@ export default class App extends React.Component {
             case outputLineTypes.input:
                 if(element.props.text === "" || element.props.text === messages.welcome) inputIsEmpty = true;
                 return (<element.component props={element.props} key={index} />);
+            case outputLineTypes.suggestions:
+                return <element.component suggestions={element.suggestions} key={index} />
             case outputLineTypes.guestHost:
                 return inputIsEmpty ? (
                   <span key={index}>

@@ -14,7 +14,8 @@ export const outputLineTypes = {
     "guestHost": "guestHost",
     "input": "input",
     "executable": "executable",
-    "noCommandFound": "noCommandFound"
+    "noCommandFound": "noCommandFound",
+    "suggestions": "suggestions"
 }
 
 export const messages = {
@@ -27,17 +28,17 @@ export const messages = {
 export const commands = [
     {
         "name": "clear",
-        "aliases": ["clear", "c"],
+        "aliases": ["c", "clear"],
         "description": "Clear the output"
     },
     {
         "name": "help",
-        "aliases": ["help", "h"],
+        "aliases": ["h", "help"],
         "description": "List available commands"
     },
     {
         "name": "experience",
-        "aliases": ["exp", "xp", "experience"],
+        "aliases": ["xp", "exp", "experience"],
         "description": "My professional experiences"
     },
     {
@@ -51,13 +52,8 @@ export const commands = [
         "description": "Projects and open source contributions"
     },
     {
-        "name": "info",
-        "aliases": ["i", "info"],
-        "description": "Information about this site"
-    },
-    {
         "name": "whoami",
-        "aliases": ["who", "wai", "w", "whoami"],
+        "aliases": ["w", "who", "whoami"],
         "description": "Who I am"
     }
 ];
@@ -71,5 +67,6 @@ export const executables = [
 export const keys = {
     "enter": "enter",
     "esc": "esc",
-    "backspace": "backspace"
+    "backspace": "backspace",
+    "tab": "tab"
 }

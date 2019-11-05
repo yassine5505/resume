@@ -4,6 +4,7 @@ import GuestHost from "./components/guest-host";
 import Input from "./components/input";
 import Script from "./components/script";
 import NoCommandFound from "./components/script/no-command-found";
+import Suggestions from "./components/script/suggestions";
 
 export const guestHost = () => {
     return {
@@ -36,6 +37,15 @@ export const executable = (command) => {
     }
 }
 
+export const suggestions = (input) => {
+    return {
+        type: outputLineTypes.suggestions,
+        input,
+        suggestions: getSuggestions(input),
+        component: Suggestions
+    }
+}
+
 export const noCommandFound = (command) => {
     return {
         type: outputLineTypes.noCommandFound,
@@ -54,14 +64,20 @@ export function addGuestHost(stack){
 }
 
 // Function that adds new input to the stack
-export function addInput(stack){
-    stack.push(input(""));
+export function addInput(stack, text = ""){
+    stack.push(input(text));
     return stack;
 }
 
 // Function to add executable to the stack
 export function addExecutable(command, stack){ 
     stack.push(executable(command));
+    return stack;
+}
+
+// Function to add executable to the stack
+export function addSuggestions(input, stack){ 
+    stack.push(suggestions(input));
     return stack;
 }
 
@@ -80,6 +96,21 @@ export function concatInput(input, stack){
     for(let i = 0; i < stack.length; i++) {
         if(stack[i].type === outputLineTypes.input) {
             stack[i].props.text = stack[i].props.text.concat(input);
+            break;
+        }
+    }
+    stack.reverse();
+    return stack;
+}
+
+// Function that concats input to the already typed in text
+export function modifyInput(input, stack){
+    // Get the last input type element in the stack,
+    // and modify it
+    stack.reverse();
+    for(let i = 0; i < stack.length; i++) {
+        if(stack[i].type === outputLineTypes.input) {
+            stack[i].props.text = input;
             break;
         }
     }
@@ -123,6 +154,20 @@ export function inputIsValid(input) {
 // "c" is an alias for "clear"
 export function isClear(input) {
     return input === commands[0].name || input === "c";
+}
+
+// Returns an array with different suggestions
+
+export function getSuggestions(input) {
+    let suggestions = [];
+    commands.forEach((cmd, i) => {
+        cmd.aliases.forEach((alias, j) => {
+            if(alias.substr(0, input.length) === input){
+                suggestions.push(alias);
+            }
+        })
+    });
+    return suggestions;
 }
 
 /* 

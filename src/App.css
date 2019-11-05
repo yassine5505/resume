@@ -12,8 +12,22 @@ body {
 	margin-top:100px;
 }
 
+/**
+	Script and other components Style
+*/
+
 .script{
 	margin: 0;
+}
+
+
+a {
+	color: #0bc;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #ff0096;
 }
 
 h4 {
@@ -35,15 +49,6 @@ ul {
 	font-size: 12px
 }
 
-a {
-	color: #0bc;
-	text-decoration: none;
-}
-
-a:hover {
-	color: #ff0096;
-}
-
 .experiences, .educations, .projects, .whoami {
 	margin: 0;
 	margin-top: 10px;
@@ -58,12 +63,34 @@ a:hover {
 	margin: 0;
 }
 
+.whoami {
+	border-style: dashed;
+	padding: 1em;
+	border-width: thin;
+}
 .banner {
 	margin-bottom: 5px;
 	align-self: center;
 	font-weight: bold;
 	text-shadow: salmon;
 	text-shadow: 0 1px 1px salmon;
-	color: #ff0096;;
+	color: #ff0096;
 }
 
+/** 
+	Guest Host Classes Style
+*/
+.guest {
+    color: #008c00;
+}
+
+.host {
+    color: #7e0477;
+}
+
+.home {
+    color: #bebe01;
+}
+.dollar {
+	margin-right: 10px;
+}
