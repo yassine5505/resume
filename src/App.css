@@ -58,3 +58,12 @@ a:hover {
 	margin: 0;
 }
 
+.banner {
+	margin-bottom: 5px;
+	align-self: center;
+	font-weight: bold;
+	text-shadow: salmon;
+	text-shadow: 0 1px 1px salmon;
+	color: red;
+}
+

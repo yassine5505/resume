@@ -129,6 +129,7 @@ export function isClear(input) {
     Constant variables used by App
 */
 export const initialOutput = [
+    executable("whoami"),
     guestHost(),
     input(messages.welcome),
     guestHost(),

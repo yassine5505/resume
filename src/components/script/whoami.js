@@ -1,9 +1,34 @@
 import React from 'react';
 import { bio } from "../../resume";
 
-export default function Whoami() {
+const url = "http://localhost:3000/banner.txt";
+
+export default class Whoami extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            banner: ""
+        }
+    }
+    loadBanner = async () => {
+        await fetch(url)
+        .then(response => response.text())
+        .then((data) => {
+            this.setState({
+                banner: data
+            });
+        })
+        .catch(err => console.log(err));
+    }
+
+    render() {
+        this.loadBanner();
+        const { banner } = this.state;
         return (
             <div className="whoami">
+                <pre className="banner">
+                    { banner }
+                </pre>
                 <h4>{ bio.name }</h4>
                 <h5>{ bio.title }</h5>
                 <p>{ bio.description }</p>
@@ -26,4 +51,5 @@ export default function Whoami() {
                 }
             </div>
         )
+    }
 }
