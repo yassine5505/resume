@@ -109,7 +109,6 @@ export function deleteInput(stack){
 // Check if an input command is valid
 export function inputIsValid(input) {
     let command;
-    console.log(command)
     // From the commands array, see if any command alias matched with input
     commands.forEach((element) => {
         // aliases
@@ -123,7 +122,7 @@ export function inputIsValid(input) {
 // Check if the input command is "clear"
 // "c" is an alias for "clear"
 export function isClear(input) {
-    return input === commands[2].name || input === "c";
+    return input === commands[0].name || input === "c";
 }
 
 /* 
