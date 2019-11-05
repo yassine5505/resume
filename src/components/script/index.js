@@ -4,6 +4,7 @@ import Help from "./help";
 import Experience from "./experience";
 import Education from "./education";
 import Project from "./project";
+import Whoami from "./whoami";
 
 function renderComponent (command) {
     switch(command){
@@ -15,6 +16,10 @@ function renderComponent (command) {
             return <Education />;
         case commands[4].name:
             return <Project />;
+        case commands[5].name:
+            return <Project />;
+        case commands[6].name:
+            return <Whoami />;
         default: return null;
     }
 }

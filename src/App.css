@@ -19,21 +19,22 @@ body {
 /**
 	Experience Children Styles
 */
-.experiences, .educations, .projects {
+.experiences, .educations, .projects, .whoami {
 	margin: 0;
+	margin-top: 10px;
 	padding: 0;
 }
 
-.experience, .education, .project {
+.experience, .education, .project, .whoami {
 	margin-bottom: 15px;
 }
 
-.experience *, .education *, .project *{
+.experience *, .education *, .project *, .whoami *{
 	margin: 0;
 }
 
 .experience h4, .education h4, .project h4{
-	color: #0bc;;
+	color: #0bc;
 }
 
 .education h4 {
@@ -69,6 +70,17 @@ body {
 	font-size: 12px;
 	text-transform: none;
 	font-style: italic;
+}
+
+.whoami h4 {
+	color: #0bc;
+	font-size: 22px;
+}
+.whoami h5 {
+	font-size: 16px
+}
+.whoami p {
+	font-size: 14px;
 }
 
 a {

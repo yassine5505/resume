@@ -119,3 +119,26 @@ export const projects = [
         "link": "https://github.com/yassine5505/cvtheque"
     },
 ];
+
+export const bio = {
+    "name": "Mohammed Yassine Chraibi",
+    "title": "Computer Engineering Student and Freelancer",
+    "description": "Creative, resourceful with strong communication skills. Passionate about the web and its technologies, I like challenges and I enjoy solving problems with code",
+    "phone": "+212 630 536 259",
+    "email": "medyassinechraibi@gmail.com",
+    "contact": [
+        {
+            "name": "Github",
+            "link": "https://github.com/yassine5505"
+        },
+        {
+            "name": "Linkedin",
+            "link": "https://www.linkedin.com/in/mohammed-yassine-chraibi-89a332133/"
+        },
+        {
+            "name": "Facebook",
+            "link": "https://www.facebook.com/moyachraibi"
+        }
+    ]
+};
+
