@@ -1,11 +1,11 @@
 body {
 	background-color: #002b35;
+	font-family: courier, monospace;
 	font-size: 16px !important;
 	color: #fff;
 }
 
 .console {
-	font-family: courier, monospace;
 	width:750px;
 	margin-left:auto;
 	margin-right:auto;
@@ -13,11 +13,43 @@ body {
 }
 
 .script{
-	border-style: dashed;
-	border-width: .2px;
-	border-color: #d3d3d3;;
-	margin: 5px 0 5px 0;
-	padding: 1em;
+	margin: 0;
+}
+
+/**
+	Experience Children Styles
+*/
+.experiences {
+	margin: 0;
+	padding: 0;
+}
+.experience {
+	margin-bottom: 15px;
+}
+.experience *{
+	margin: 0;
+}
+
+.experience h4 {
+	color: #0bc;
+}
+
+.experience h5 {
+	color: #9E9E9E;
+	font-weight: lighter;
+}
+
+.experience p:first-of-type {
+	font-size: 10px;
+	font-style: italic;
+}
+
+.experience p:nth-of-type(2) {
+	font-size: 14px;
+}
+
+.experience ul {
+	font-size: 12px;
 }
 
 a {
@@ -29,9 +61,6 @@ a {
 	color: #0f0;
 }
 
-.command {
-	color: #0bc;
-}
 
 #b {
 	color: #ff0096;

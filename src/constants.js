@@ -20,7 +20,7 @@ export const outputLineTypes = {
 export const messages = {
     "help": "For help, type help or -h",
     "experience": "For a full list of my experiences, type xp or experience",
-    "noCommandFound": "No command was found",
+    "noCommandFound": "no command was found",
     "welcome": "Welcome to my portfolio, get started by typing help to get a full list of available commands"
 };
 

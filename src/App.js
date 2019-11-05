@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import './App.css';
 import Cursor from './components/cursor';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
@@ -10,7 +11,6 @@ import { inputIsValid,
     concatInput,
     addInput,
     deleteInput,
-    reinitializedOutput,
     initialOutput,
     isClear } from './utils';
 
@@ -24,6 +24,7 @@ export default class App extends React.Component {
   constructor(props){
     super(props);
     this.state = this.defaultState;
+    this.cursor = React.createRef();
   }
   
   // Handle key press (Alphanumeric)
@@ -105,6 +106,22 @@ export default class App extends React.Component {
     });
   }
 
+  handleScrollToCursor = () => {
+    let cursorCoords = ReactDOM
+      .findDOMNode(this.refs['cursor'])
+      .getBoundingClientRect();
+    window.scrollTo(cursorCoords.x,cursorCoords.y);
+
+  }
+
+  componentDidUpdate = () => {
+    this.handleScrollToCursor();
+  }
+
+  componentDidMount = () => {
+    this.handleScrollToCursor();
+  }
+
   render() {
     const { output } = this.state;
     let inputIsEmpty = false;
@@ -119,7 +136,7 @@ export default class App extends React.Component {
               return (<element.component props={element.props} key={index} />);
             case outputLineTypes.input:
                 if(element.props.text === "" || element.props.text === messages.welcome) inputIsEmpty = true;
-                return (<element.component props={element.props} key={index} key={index} />);
+                return (<element.component props={element.props} key={index} />);
             case outputLineTypes.guestHost:
                 return inputIsEmpty ? (
                   <span key={index}>
@@ -134,7 +151,7 @@ export default class App extends React.Component {
             default: return null; 
           }
         })}
-        <Cursor />
+        <Cursor ref="cursor" />
       </div>
     );
   }

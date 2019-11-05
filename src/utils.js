@@ -1,4 +1,4 @@
-import { outputLineTypes, executables, messages } from "./constants";
+import { outputLineTypes, messages } from "./constants";
 import { commands } from "./constants";
 import GuestHost from "./components/guest-host";
 import Input from "./components/input";
@@ -77,11 +77,9 @@ export function concatInput(input, stack){
     // Get the last input type element in the stack,
     // concat new input to it input
     stack.reverse();
-    let found = false;
     for(let i = 0; i < stack.length; i++) {
         if(stack[i].type === outputLineTypes.input) {
             stack[i].props.text = stack[i].props.text.concat(input);
-            found = true;
             break;
         }
     }
