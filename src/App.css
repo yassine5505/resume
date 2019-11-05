@@ -16,9 +16,34 @@ body {
 	margin: 0;
 }
 
-/**
-	Experience Children Styles
-*/
+h4 {
+	color: #0bc;
+	font-size: 16px;
+	font-weight: lighter;
+}
+
+h5 {
+	font-size: 14px;
+	font-weight: lighter;
+}
+
+p {
+	font-size: 12px;
+}
+
+ul {
+	font-size: 12px
+}
+
+a {
+	color: #0bc;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #ff0096;
+}
+
 .experiences, .educations, .projects, .whoami {
 	margin: 0;
 	margin-top: 10px;
@@ -33,61 +58,3 @@ body {
 	margin: 0;
 }
 
-.experience h4, .education h4, .project h4{
-	color: #0bc;
-}
-
-.education h4 {
-	font-size: 14px;
-}
-
-.experience h5, .education h5, .project h5{
-	color: #9E9E9E;
-	font-weight: lighter;
-}
-
-.experience p:first-of-type,
-.education p:first-of-type
-{
-	font-size: 10px;
-	font-style: italic;
-}
-
-.experience p:nth-of-type(2), .education p:nth-of-type(2){
-	font-size: 14px;
-}
-
-.experience ul, .project ul {
-	font-size: 12px;
-}
-
-.project p {
-	font-size: 12px;
-}
-
-.education a {
-	color: #0f0;
-	font-size: 12px;
-	text-transform: none;
-	font-style: italic;
-}
-
-.whoami h4 {
-	color: #0bc;
-	font-size: 22px;
-}
-.whoami h5 {
-	font-size: 16px
-}
-.whoami p {
-	font-size: 14px;
-}
-
-a {
-	color: #0bc;
-	text-decoration: none;
-}
-
-a:hover {
-	color: #ff0096;
-}
