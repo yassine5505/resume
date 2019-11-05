@@ -37,6 +37,18 @@ export const commands = [
         "name": "clear",
         "aliases": ["clear", "c"],
     },
+    {
+        "name": "education",
+        "aliases": ["edu", "education"]
+    },
+    {
+        "name": "projects",
+        "aliases": ["p", "projects"]
+    },
+    {
+        "name": "info",
+        "aliases": ["i", "info"]
+    }
 ];
 
 // All executables with html

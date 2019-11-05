@@ -51,8 +51,71 @@ export const experiences = [
     }
 ];
 export const education = [
-    
+    {
+        "title": "Computer Engineering",
+        "institution": "National School of Applied Sciences of Tétouan",
+        "date": "September 2016 - July 2020",
+        "link": "http://ensate.uae.ac.ma/index/?page_id=1157"
+    },
+    {
+        "title": "Preparatory classes",
+        "institution": "National School of Applied Sciences of Tétouan",
+        "date": "September 2014 - July 2016",
+        "link": "http://ensate.uae.ac.ma/index/?page_id=1859"
+    }
 ];
-export const projects = [
 
+export const projects = [
+    {
+        "title": "Terminal Resume",
+        "subtitle": "React terminal-like resume",
+        "description": "Well...you're using it !",
+        "missions": [
+            "In progress",
+        ],
+        "link": "https://github.com/yassine5505/terminal-resume"
+    },
+    {
+        "title": "RENTECH",
+        "subtitle": "Car Renting Application",
+        "description": "A car rental application developed using Angular 6 and Laravel 5.7.2. It's a new concept for rental systems where everything is automated.",
+        "missions": [
+            "Developed a Laravel 5 based REST API",
+            "Designed and implemented database using UML 2.0 and Laravel migrations",
+            "Programmed CRON jobs to clean up expired offers periodically and send mails"
+        ],
+        "link": "https://github.com/yassine5505/Rentech"
+    },
+    {
+        "title": "isBusy",
+        "subtitle": "Venue availability calculator",
+        "description": "A mobile application based on Foursquare API that calculates the availability of a venue based on user scores, history and other factors.",
+        "missions": [
+            "Led a team of 6 colleagues to develop the Spring Boot server",
+            "Developed many features of the application",
+            "Deployed the application"
+        ],
+        "link": "https://github.com/yassine5505/isbusy-backend"
+    },
+    {
+        "title": "Canal Lock Simulator",
+        "subtitle": "",
+        "description": "A desktop application that simulates how a canal lock works. This was an academic project that was. The automatic mode was challenging to implement.",
+        "missions": [
+            "Developed the front end of the application with JavaFX",
+            "Coded the core functionnality of the simulator",
+            "Used the functionnalities to code an automatic mode handled completely by threads"
+        ],
+        "link": "https://github.com/yassine5505/Simulateur_Ecluse"
+    },
+    {
+        "title": "CVtheque",
+        "subtitle": "Company/Student gateway with resume generator",
+        "description": "CVtheque is a web app (PHP and jQuery) that connects companies to students for eventual internships or job offers. Students can fill and generate their resumes. Companies can view applicatns and sort them (basic HR stuff).",
+        "missions": [
+            "Designed and implemented the company part of the application",
+            "Helped with implementing the 'edit resume' functionnality with jQuery"
+        ],
+        "link": "https://github.com/yassine5505/cvtheque"
+    },
 ];

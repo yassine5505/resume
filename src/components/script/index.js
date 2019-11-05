@@ -2,6 +2,8 @@ import React from "react";
 import { commands } from "../../constants";
 import Help from "./help";
 import Experience from "./experience";
+import Education from "./education";
+import Project from "./project";
 
 function renderComponent (command) {
     switch(command){
@@ -9,6 +11,10 @@ function renderComponent (command) {
             return <Help />;
         case commands[1].name:
             return <Experience />;
+        case commands[3].name:
+            return <Education />;
+        case commands[4].name:
+            return <Project />;
         default: return null;
     }
 }

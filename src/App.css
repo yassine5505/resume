@@ -19,37 +19,56 @@ body {
 /**
 	Experience Children Styles
 */
-.experiences {
+.experiences, .educations, .projects {
 	margin: 0;
 	padding: 0;
 }
-.experience {
+
+.experience, .education, .project {
 	margin-bottom: 15px;
 }
-.experience *{
+
+.experience *, .education *, .project *{
 	margin: 0;
 }
 
-.experience h4 {
-	color: #0bc;
+.experience h4, .education h4, .project h4{
+	color: #0bc;;
 }
 
-.experience h5 {
+.education h4 {
+	font-size: 14px;
+}
+
+.experience h5, .education h5, .project h5{
 	color: #9E9E9E;
 	font-weight: lighter;
 }
 
-.experience p:first-of-type {
+.experience p:first-of-type,
+.education p:first-of-type
+{
 	font-size: 10px;
 	font-style: italic;
 }
 
-.experience p:nth-of-type(2) {
+.experience p:nth-of-type(2), .education p:nth-of-type(2){
 	font-size: 14px;
 }
 
-.experience ul {
+.experience ul, .project ul {
 	font-size: 12px;
+}
+
+.project p {
+	font-size: 12px;
+}
+
+.education a {
+	color: #0f0;
+	font-size: 12px;
+	text-transform: none;
+	font-style: italic;
 }
 
 a {
@@ -57,25 +76,6 @@ a {
 	text-decoration: none;
 }
 
-#a {
-	color: #0f0;
-}
-
-
-#b {
+a:hover {
 	color: #ff0096;
-}
-
-#k {
-    	animation: change 1s;
-}
-
-#op{
-    	color: #888888
-}
-
-@keyframes change {
-    	0%  { color:  #0f0; }
-    	50% { color:  #0f0; }
-    	99% { color: black; }
 }

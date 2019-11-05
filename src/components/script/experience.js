@@ -1,7 +1,7 @@
 import React from 'react';
 import { experiences } from "../../resume";
 
-export default function Experience(){
+export default function Experience() {
         return (
             <div className="experiences">
                 { experiences.map((xp, index) => {
