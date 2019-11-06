@@ -29,7 +29,6 @@ export default class Whoami extends React.Component {
                 <pre className="banner">
                     { banner }
                 </pre>
-                <h4>{ bio.name }</h4>
                 <h5>{ bio.title }</h5>
                 <p>{ bio.description }</p>
                 <p>{ "Phone: " + bio.phone }</p>
