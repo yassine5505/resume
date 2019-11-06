@@ -68,5 +68,6 @@ export const keys = {
     "enter": "enter",
     "esc": "esc",
     "backspace": "backspace",
-    "tab": "tab"
+    "tab": "tab",
+    "space": "space"
 }

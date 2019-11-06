@@ -46,6 +46,7 @@ export default class App extends React.Component {
 
   // Handle control key events
   handleControlKeyEvent = (key, e) => {
+    let { input, output } = this.state;
     switch(key) {
       case keys.enter:   
         this.handleEnterKeyEvent();
@@ -56,7 +57,15 @@ export default class App extends React.Component {
       case keys.tab:
           e.preventDefault();
           this.handleTabEvent();
-          break;
+          break;  
+      case keys.space:
+        output = concatInput(" ", output);
+        input = input.concat(" ");
+        this.setState({
+          input,
+          output
+        });
+        break
       default: return;
     }
   }
