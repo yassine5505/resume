@@ -22,7 +22,7 @@ export const messages = {
     "help": "For help, type help or -h",
     "experience": "For a full list of my experiences, type xp or experience",
     "noCommandFound": "no command was found",
-    "welcome": "Welcome to my portfolio, get started by typing 'h' or 'help' to get a full list of available commands"
+    "welcome": "Hi there ! Get started by typing 'h' or 'help' to get a full list of available commands"
 };
 
 export const commands = [
@@ -69,5 +69,7 @@ export const keys = {
     "esc": "esc",
     "backspace": "backspace",
     "tab": "tab",
-    "space": "space"
+    "space": "space",
+    "up": "up",
+    "down": "down"
 }

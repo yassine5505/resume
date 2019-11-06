@@ -16,11 +16,13 @@ import { inputIsValid,
     getSuggestions, 
     addSuggestions,
     modifyInput} from './utils';
+import { thisExpression } from '@babel/types';
 
 export default class App extends React.Component {
   defaultState = {
     input: "",
     executedCommands: [],
+    currentCommand: 0,
     output: initialOutput
   }
 
@@ -46,7 +48,6 @@ export default class App extends React.Component {
 
   // Handle control key events
   handleControlKeyEvent = (key, e) => {
-    let { input, output } = this.state;
     switch(key) {
       case keys.enter:   
         this.handleEnterKeyEvent();
@@ -59,20 +60,23 @@ export default class App extends React.Component {
           this.handleTabEvent();
           break;  
       case keys.space:
-        output = concatInput(" ", output);
-        input = input.concat(" ");
-        this.setState({
-          input,
-          output
-        });
-        break
+        this.handleSpaceEvent();
+        break;
+      case keys.up:
+        e.preventDefault();
+        this.handleUpEvent();
+        break;
+      case keys.down:
+        e.preventDefault();
+        this.handleDownEvent();
+        break;
       default: return;
     }
   }
 
   // Handle Enter control key
   handleEnterKeyEvent = () => {
-    let { input, output, executedCommands } = this.state;
+    let { input, output, executedCommands, currentCommand } = this.state;
     let associatedCommand = inputIsValid(input);
     if(input === "") {
       output = addGuestHost(output);
@@ -83,14 +87,14 @@ export default class App extends React.Component {
       });
     } else if(associatedCommand) {
       executedCommands.push(input);
-        if(isClear(input)){
+        if(isClear(input)) {
           output = addGuestHost([]);
           output = addInput(output);
-    
           this.setState({
             output,
             input: "",
-            executedCommands
+            executedCommands,
+            currentCommand
           })
         } else {
           output = addExecutable(associatedCommand, output);
@@ -111,6 +115,7 @@ export default class App extends React.Component {
         input: ""
       });
     }
+    currentCommand = executedCommands.length - 1;
   }
 
   // Handle backspace control key
@@ -142,6 +147,45 @@ export default class App extends React.Component {
         output
       });
     }
+  }
+
+  handleSpaceEvent = () => {
+    let { input, output } = this.state;
+    output = concatInput(" ", output);
+        input = input.concat(" ");
+        this.setState({
+          input,
+          output
+        });
+  }
+
+  handleUpEvent = () => {
+    // get previous executed command
+    let { input, output, executedCommands, currentCommand } = this.state;
+    if(executedCommands.length === 0) return;
+    if(currentCommand <= 0) currentCommand = executedCommands.length - 1;
+    else currentCommand -= 1;
+    input = executedCommands[currentCommand];
+    output = modifyInput(input, output);
+    this.setState({
+      input,
+      output,
+      currentCommand
+    });
+  }
+
+  handleDownEvent = () => {
+    let { input, output, executedCommands, currentCommand } = this.state;
+    if(executedCommands.length === 0) return;
+    if(currentCommand >= executedCommands.length - 1) currentCommand = 0;
+    else currentCommand += 1;
+    input = executedCommands[currentCommand];
+    output = modifyInput(input, output);
+    this.setState({
+      input,
+      output,
+      currentCommand
+    });
   }
 
   handleScrollToCursor = () => {
