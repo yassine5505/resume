@@ -45,7 +45,8 @@ export default class App extends React.Component {
   }
 
   // Handle control key events
-  handleControlKeyEvent = (key) => {
+  handleControlKeyEvent = (key, e) => {
+    e.preventDefault();
     switch(key) {
       case keys.enter:   
         this.handleEnterKeyEvent();
