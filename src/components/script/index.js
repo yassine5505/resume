@@ -5,6 +5,7 @@ import Experience from "./experience";
 import Education from "./education";
 import Project from "./project";
 import Whoami from "./whoami";
+import Skill from "./skill";
 
 function renderComponent (command) {
     switch(command){
@@ -18,6 +19,8 @@ function renderComponent (command) {
             return <Project />;
         case commands[5].name:
             return <Whoami />;
+        case commands[6].name:
+            return <Skill />;
         default: return null;
     }
 }

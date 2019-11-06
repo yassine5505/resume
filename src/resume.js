@@ -142,3 +142,33 @@ export const bio = {
     ]
 };
 
+export const skills = [
+    {
+        "category": "Web Development",
+        "skills": ["HTML", "CSS", "SASS", "JavaScript", "PHP", "JAVA"]
+    },
+    {
+        "category": "SQL",
+        "skills": ["MySQL", "Oracle"]
+    },
+    {
+        "category": "NoSQL",
+        "skills": ["MOngoDB", "Firebase"]
+    },
+    {
+        "category": "Frameworks",
+        "skills": ["Laravel", "React JS", "Spring Boot", "Express", "JavaFX", "Electron"]
+    },
+    {
+        "category": "Industry Knowledge",
+        "skills": ["APIs", "HTTP", "Networking",  "AJAX", "UML", "BPMN", "Cloud", "Business Intelligence"]
+    },
+    {
+        "category": "Project Management",
+        "skills": ["Agile", "SCRUM", "Jira", "Slack", "Trello"]
+    },
+    {
+        "category": "Other",
+        "skills": ["Git", "C", "Python", "Bootstrap", "jQuery",  "JHipster", "Elasticsearch", "Docker"]
+    }
+];

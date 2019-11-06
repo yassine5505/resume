@@ -18,6 +18,7 @@ body {
 
 .script{
 	margin: 0;
+	margin-bottom: 10px;
 }
 
 
@@ -97,4 +98,17 @@ ul {
 }
 .dollar {
 	margin-right: 10px;
+}
+
+/**
+	Skill elements style
+*/
+.skill {
+	margin-right: 5px;
+	margin: 0px 5px 10px 0;
+	padding: 5px 8px 5px 8px;
+	background-color: rgba(229, 229, 229, .16);
+	border-radius: 10px;
+	font-size: 12px;
+	color: #e5e5e5;
 }

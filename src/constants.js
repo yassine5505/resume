@@ -55,6 +55,11 @@ export const commands = [
         "name": "whoami",
         "aliases": ["w", "who", "whoami"],
         "description": "Who I am"
+    },
+    {
+        "name": "skills",
+        "aliases": ["s", "skills"],
+        "description": "Programming languages and technologies"
     }
 ];
 
