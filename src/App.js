@@ -138,7 +138,9 @@ export default class App extends React.Component {
     let cursorCoords = ReactDOM
       .findDOMNode(this.refs['cursor'])
       .getBoundingClientRect();
-    window.scrollTo(cursorCoords.x,cursorCoords.y);
+    let cursor = ReactDOM
+    .findDOMNode(this.refs['cursor']);
+    cursor.scrollIntoView();
   }
 
   componentDidUpdate = () => {
