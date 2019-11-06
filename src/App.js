@@ -46,7 +46,6 @@ export default class App extends React.Component {
 
   // Handle control key events
   handleControlKeyEvent = (key, e) => {
-    e.preventDefault();
     switch(key) {
       case keys.enter:   
         this.handleEnterKeyEvent();
@@ -55,6 +54,7 @@ export default class App extends React.Component {
           this.handleBackspaceEvent();
           break;
       case keys.tab:
+          e.preventDefault();
           this.handleTabEvent();
       default: return;
     }
