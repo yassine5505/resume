@@ -21,8 +21,11 @@ export default class Whoami extends React.Component {
         .catch(err => console.log(err));
     }
 
-    render() {
+    componentDidMount = () => {
         this.loadBanner();
+    }
+    
+    render() {
         const { banner } = this.state;
         return (
             <div className="whoami">

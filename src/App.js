@@ -56,6 +56,7 @@ export default class App extends React.Component {
       case keys.tab:
           e.preventDefault();
           this.handleTabEvent();
+          break;
       default: return;
     }
   }
