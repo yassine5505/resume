@@ -28,7 +28,6 @@ export default class App extends React.Component {
   constructor(props){
     super(props);
     this.state = this.defaultState;
-    this.cursor = React.createRef();
   }
   
   // Handle key press (Alphanumeric)
