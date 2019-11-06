@@ -16,7 +16,6 @@ import { inputIsValid,
     getSuggestions, 
     addSuggestions,
     modifyInput} from './utils';
-import { thisExpression } from '@babel/types';
 
 export default class App extends React.Component {
   defaultState = {
