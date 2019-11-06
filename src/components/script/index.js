@@ -1,6 +1,5 @@
 import React from "react";
 import { commands } from "../../constants";
-import { getSuggestions } from "../../utils";
 import Help from "./help";
 import Experience from "./experience";
 import Education from "./education";

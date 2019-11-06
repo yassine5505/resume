@@ -22,8 +22,10 @@ body {
 
 
 a {
-	color: #0bc;
+	color: #e5e5e5;
+	font-weight: bold;
 	text-decoration: none;
+	font-size: 12px;
 }
 
 a:hover {
@@ -31,21 +33,28 @@ a:hover {
 }
 
 h4 {
-	color: #0bc;
+	color: #e5e5e5;
 	font-size: 16px;
 	font-weight: lighter;
 }
 
+h4 > a {
+	font-size: 16px;
+}
+
 h5 {
+	color: #d5d5d5;
 	font-size: 14px;
 	font-weight: lighter;
 }
 
 p {
+	color: #d5d5d5;
 	font-size: 12px;
 }
 
 ul {
+	color: #d5d5d5;
 	font-size: 12px
 }
 
