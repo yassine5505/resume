@@ -103,40 +103,6 @@ export function concatInput(input, stack){
     return stack;
 }
 
-// Function that concats input to the already typed in text
-export function modifyInput(input, stack){
-    // Get the last input type element in the stack,
-    // and modify it
-    stack.reverse();
-    for(let i = 0; i < stack.length; i++) {
-        if(stack[i].type === outputLineTypes.input) {
-            stack[i].props.text = input;
-            break;
-        }
-    }
-    stack.reverse();
-    return stack;
-}
-
-// Function that deletes one char from the current input
-export function deleteInput(stack){
-    stack.reverse();
-    for(let i = 0; i < stack.length; i++) {
-        if(stack[i].type === outputLineTypes.input) {
-            // remove last char 
-            if(stack[i].props.text.length > 0) {
-                stack[i].props.text = stack[i].props.text.substr(0, stack[i].props.text.length -1)
-            }
-            else {
-                stack[i].props.text = ""
-            }
-            break;
-        }
-    }
-    stack.reverse();
-    return stack;
-}
-
 // Check if an input command is valid
 export function inputIsValid(input) {
     let command;

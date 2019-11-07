@@ -70,11 +70,9 @@ export const executables = [
 
 // Keyboard keys
 export const keys = {
-    "enter": "enter",
-    "esc": "esc",
-    "backspace": "backspace",
-    "tab": "tab",
-    "space": "space",
-    "up": "up",
-    "down": "down"
+    "enter": "Enter",
+    "esc": "Escape",
+    "tab": "Tab",
+    "up": "ArrowUp",
+    "down": "ArrowDown"
 }

@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
-import Cursor from './components/cursor';
-import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { keys, outputLineTypes, messages } from './constants';
 import { inputIsValid,
     addGuestHost,
@@ -10,12 +8,10 @@ import { inputIsValid,
     addNoCommandFound,
     concatInput,
     addInput,
-    deleteInput,
     initialOutput,
     isClear,
     getSuggestions, 
-    addSuggestions,
-    modifyInput} from './utils';
+    addSuggestions } from './utils';
 
 export default class App extends React.Component {
   defaultState = {
@@ -47,19 +43,10 @@ export default class App extends React.Component {
   // Handle control key events
   handleControlKeyEvent = (key, e) => {
     switch(key) {
-      case keys.enter:   
-        this.handleEnterKeyEvent();
-        break;
-      case keys.backspace:
-          this.handleBackspaceEvent();
-          break;
       case keys.tab:
-          e.preventDefault();
-          this.handleTabEvent();
-          break;  
-      case keys.space:
-        this.handleSpaceEvent();
-        break;
+        e.preventDefault();
+        this.handleTabEvent();
+        break;  
       case keys.up:
         e.preventDefault();
         this.handleUpEvent();
@@ -73,55 +60,30 @@ export default class App extends React.Component {
   }
 
   // Handle Enter control key
-  handleEnterKeyEvent = () => {
+  handleEnterKeyEvent = (e) => {
+    e.preventDefault();
     let { input, output, executedCommands, currentCommand } = this.state;
     let associatedCommand = inputIsValid(input);
+    output = addInput(output, input);
     if(input === "") {
-      output = addGuestHost(output);
-      output = addInput(output);
-      this.setState({
-        output,
-        input: ""
-      });
+      addGuestHost(output);
     } else if(associatedCommand) {
       executedCommands.push(input);
         if(isClear(input)) {
           output = addGuestHost([]);
-          output = addInput(output);
-          this.setState({
-            output,
-            input: "",
-            executedCommands,
-            currentCommand
-          })
         } else {
-          output = addExecutable(associatedCommand, output);
-          output = addGuestHost(output);
-          output = addInput(output);
-          this.setState({
-            output: output,
-            input: "",
-            executedCommands
-          });
+          addExecutable(associatedCommand, output);
+          addGuestHost(output);
         }
     } else {
-      output = addNoCommandFound(output, input);
-      output = addGuestHost(output);
-      output = addInput(output);
-      this.setState({
-        output: output,
-        input: ""
-      });
+      addNoCommandFound(output, input);
+      addGuestHost(output);
     }
-    currentCommand = executedCommands.length - 1;
-  }
-
-  // Handle backspace control key
-  handleBackspaceEvent = () => {
-    const { input, output } = this.state;
     this.setState({
-      output: deleteInput(output),
-      input: input.substr(0, input.length - 1)
+      input: "",
+      output,
+      executedCommands,
+      currentCommand
     });
   }
 
@@ -132,90 +94,88 @@ export default class App extends React.Component {
     else if(suggestions.length === 1) {
       // Component  re renders but not writing to input !!!
       input = suggestions[0];
-      output = modifyInput(input, output);
-      this.setState({
-        input: suggestions[0],
-        output
-      });
     } else {
-      output = addSuggestions(input, output);
-      output = addGuestHost(output);
-      output = addInput(output, input);
-      this.setState({
-        output
-      });
+      addInput(output, input)
+      addSuggestions(input, output);
+      addGuestHost(output);
     }
-  }
-
-  handleSpaceEvent = () => {
-    let { input, output } = this.state;
-    output = concatInput(" ", output);
-        input = input.concat(" ");
-        this.setState({
-          input,
-          output
-        });
+    this.setState({
+      input: suggestions[0],
+      output
+    });
   }
 
   handleUpEvent = () => {
-    // get previous executed command
-    let { input, output, executedCommands, currentCommand } = this.state;
+    let { input, executedCommands, currentCommand } = this.state;
     if(executedCommands.length === 0) return;
     if(currentCommand <= 0) currentCommand = executedCommands.length - 1;
     else currentCommand -= 1;
     input = executedCommands[currentCommand];
-    output = modifyInput(input, output);
     this.setState({
       input,
-      output,
       currentCommand
     });
   }
 
   handleDownEvent = () => {
-    let { input, output, executedCommands, currentCommand } = this.state;
+    let { input, executedCommands, currentCommand } = this.state;
     if(executedCommands.length === 0) return;
     if(currentCommand >= executedCommands.length - 1) currentCommand = 0;
     else currentCommand += 1;
     input = executedCommands[currentCommand];
-    output = modifyInput(input, output);
     this.setState({
       input,
-      output,
       currentCommand
     });
   }
 
-  handleScrollToCursor = () => {
-    ReactDOM
-      .findDOMNode(this.refs['cursor']).scrollIntoView();
+  handleCursorFocus = () => {
+    // Scroll to input and focus it 
+    let input = ReactDOM
+      .findDOMNode(this.refs['cursor']);
+    input.scrollIntoView();
+    window.addEventListener('click', () => {
+      input.focus()
+    });
+  }
+
+  handleWindowClick = () => {
+    window.addEventListener('keydown', e => {
+      this.handleControlKeyEvent(e.key, e);
+    });
   }
 
   componentDidUpdate = () => {
-    this.handleScrollToCursor();
+    this.handleCursorFocus();
   }
 
   componentDidMount = () => {
-    this.handleScrollToCursor();
+    this.handleCursorFocus();
+    this.handleWindowClick();
+  }
+
+  handleInputChange = e => {
+    let input = e.target.value;
+    this.setState({
+      input
+    })
   }
 
   render() {
-    const { output } = this.state;
+    const { input, output } = this.state;
     let inputIsEmpty = false;
     return (
       <div className="console" id="console">
-        <KeyboardEventHandler handleKeys={['alphanumeric']} onKeyEvent={this.handleKeyEvent} />
-        <KeyboardEventHandler handleKeys={['all']} onKeyEvent={this.handleControlKeyEvent} />
         { /* Render output here */ }
         { output.map((element, index) => {
           switch(element.type) {
             case outputLineTypes.executable:
-              return (<element.component props={element.props} key={index} />);
+              return <element.component props={element.props} key={index} />;
             case outputLineTypes.input:
                 if(element.props.text === "" || element.props.text === messages.welcome) inputIsEmpty = true;
-                return (<element.component props={element.props} key={index} />);
+                return <element.component props={element.props} key={index} />;
             case outputLineTypes.suggestions:
-                return <element.component suggestions={element.suggestions} key={index} />
+                return <element.component suggestions={element.suggestions} key={index} />;
             case outputLineTypes.guestHost:
                 return inputIsEmpty ? (
                   <span key={index}>
@@ -226,11 +186,13 @@ export default class App extends React.Component {
                     <element.component key={index} />
                   );
             case outputLineTypes.noCommandFound:
-              return <element.component props={element.props} key={index} />
+              return <element.component props={element.props} key={index} />;
             default: return null; 
           }
         })}
-        <Cursor ref="cursor" />
+        <form onSubmit={this.handleEnterKeyEvent}>
+          <input type="text" value={input} placeholder={""} ref="cursor" autoFocus onChange={this.handleInputChange} />
+        </form>
       </div>
     );
   }

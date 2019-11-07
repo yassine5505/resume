@@ -59,6 +59,19 @@ ul {
 	font-size: 12px
 }
 
+form {
+	display: inline !important;
+}
+
+input {
+	outline: none;
+    background-color: transparent;
+	margin: 0;
+	display: inline-block;
+    font: inherit;
+    border: none;
+	color: inherit;
+}
 .experiences, .educations, .projects, .whoami {
 	margin: 0;
 	margin-top: 10px;
