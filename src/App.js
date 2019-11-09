@@ -92,7 +92,6 @@ export default class App extends React.Component {
     let suggestions = getSuggestions(input);
     if(input === "" || suggestions.length === 0) return;
     else if(suggestions.length === 1) {
-      // Component  re renders but not writing to input !!!
       input = suggestions[0];
     } else {
       addInput(output, input)
@@ -132,7 +131,7 @@ export default class App extends React.Component {
   handleCursorFocus = () => {
     // Scroll to input and focus it 
     let input = ReactDOM
-      .findDOMNode(this.refs['cursor']);
+      .findDOMNode(this.refs['inputs']);
     input.scrollIntoView();
     window.addEventListener('click', () => {
       input.focus()
@@ -191,7 +190,7 @@ export default class App extends React.Component {
           }
         })}
         <form onSubmit={this.handleEnterKeyEvent}>
-          <input type="text" value={input} placeholder={""} ref="cursor" autoFocus onChange={this.handleInputChange} />
+          <input type="text" value={input} placeholder={""} ref="input" autoFocus onChange={this.handleInputChange} />
         </form>
       </div>
     );
