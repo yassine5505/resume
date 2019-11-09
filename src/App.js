@@ -65,7 +65,7 @@ export default class App extends React.Component {
     let { input, output, executedCommands, currentCommand } = this.state;
     let associatedCommand = inputIsValid(input);
     output = addInput(output, input);
-    if(input === "") {
+    if(input === "" || input === " ") {
       addGuestHost(output);
     } else if(associatedCommand) {
       executedCommands.push(input);
