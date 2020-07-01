@@ -131,7 +131,7 @@ export default class App extends React.Component {
   handleCursorFocus = () => {
     // Scroll to input and focus it 
     let input = ReactDOM
-      .findDOMNode(this.refs['inputs']);
+      .findDOMNode(this.refs['input']);
     input.scrollIntoView();
     window.addEventListener('click', () => {
       input.focus()

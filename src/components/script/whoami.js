@@ -1,7 +1,7 @@
 import React from 'react';
 import { bio } from "../../resume";
 
-const url = "http://localhost:3000/banner.txt";
+const url = "http://localhost:3000/cli-like-resume/banner.txt";
 
 export default class Whoami extends React.Component {
     constructor(props) {
